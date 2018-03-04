@@ -1,3 +1,4 @@
+import java.lang.reflect.Array;
 
 /**
  * @overview A class define data type Set
@@ -9,7 +10,7 @@ public class Set {
      *
      */
     public Set() {
-
+        public Array a;
     }
 
     /**
