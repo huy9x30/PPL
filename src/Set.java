@@ -5,47 +5,88 @@ import java.util.NoSuchElementException;
  * @author Huy
  */
 public class Set<T> implements Iterable<T> {
+    /**
+     *  @effects
+     *      initialise values = T[]
+     */
     T[] values;
 
-    public Set(T[] values) {
-        this.values = values;
+    /**
+     * @effects
+     *      set values = elements
+     */
+    public Set(T[] elements) {
+        this.values = elements;
     }
 
+    /**
+     *
+     * @param element
+     */
     public void add(T element) {
-        // TODO
+
     }
 
+    /**
+     *
+     */
     public void remove() {
-        // TODO
+
     }
 
+    /**
+     *
+     * @param index
+     * @return
+     */
     public T get(int index) {
         return values[index];
     }
 
+    /**
+     *
+     * @param index
+     * @param value
+     */
     public void set(int index, T value) {
         values[index] = value;
     }
 
+    /**
+     *
+     * @return
+     */
     public int length() {
         return values.length;
     }
 
+    /**
+     *
+     * @return
+     */
     public Iterator<T> iterator() {
         return new SetIterator();
     }
 
+    /**
+     *
+     */
     private class SetIterator implements Iterator<T> {
         int current = 0;
 
+        /**
+         *
+         * @return
+         */
         public boolean hasNext() {
-            if (current < Set.this.values.length) {
-                return true;
-            } else {
-                return false;
-            }
+            return current < Set.this.values.length;
         }
 
+        /**
+         *
+         * @return
+         * @throws NoSuchElementException
+         */
         public T next() throws NoSuchElementException {
             if (!hasNext()) {
                 throw new NoSuchElementException();
@@ -54,6 +95,10 @@ public class Set<T> implements Iterable<T> {
         }
     }
 
+    /**
+     *
+     * @return
+     */
     @Override
     public String toString() {
         SetIterator a = new SetIterator();

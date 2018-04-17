@@ -5,10 +5,12 @@ import java.util.Scanner;
  * @author Huy
  */
 public class PCProg {
-    Set<PC> pcProg;
-    public static void main(String[] args) {
+    Set<PC> pcSet;
 
-    }
+    /**
+     * Create new object PC and add to Set<PC>
+     * @throws InputMismatchException
+     */
     public void createObject() throws InputMismatchException {
         try{
             Scanner scan = new Scanner(System.in);
@@ -26,17 +28,27 @@ public class PCProg {
                         components.set(i, scan.nextLine());
                     }
                 PC pc = new PC(model, year, manufacturer, components);
-                pcProg.add(pc);
+                pcSet.add(pc);
         } catch (InputMismatchException e) {
             throw new InputMismatchException("You input an invalid value");
         }
     }
 
+    /**
+     *
+     */
     public void displayReport() {
         // TODO
     }
 
+    /**
+     *
+     */
     public void saveReport() {
         // TODO
+    }
+
+    public String abcString() {
+        return pcSet.toString();
     }
 }
