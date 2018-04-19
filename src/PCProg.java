@@ -1,3 +1,4 @@
+import java.util.ArrayList;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
@@ -5,7 +6,7 @@ import java.util.Scanner;
  * @author Huy
  */
 public class PCProg {
-    Set<PC> pcSet;
+    ArrayList<PC> pcList = new ArrayList<>();
 
     /**
      * Create new object PC and add to Set<PC>
@@ -22,13 +23,13 @@ public class PCProg {
                 String manufacturer = scan.nextLine();
                 System.out.println("How many components in this PC?");
                 int length = scan.nextInt();
-                Set<String> components = new Set(new String[length]);
+                Set components = new Set();
                     for (int i = 0; i < length; i++) {
                         System.out.println("Input component " + (i+1) + ": " );
-                        components.set(i, scan.nextLine());
+                        components.add(scan.nextLine());
                     }
                 PC pc = new PC(model, year, manufacturer, components);
-                pcSet.add(pc);
+                pcList.add(pc);
         } catch (InputMismatchException e) {
             throw new InputMismatchException("You input an invalid value");
         }
@@ -49,6 +50,6 @@ public class PCProg {
     }
 
     public String abcString() {
-        return pcSet.toString();
+        return pcList.toString();
     }
 }

@@ -1,114 +1,127 @@
-import java.util.Iterator;
-import java.util.NoSuchElementException;
+import java.util.Vector;
 
 /**
- * @author Huy
+ * @overview Set are mutable, unbounded sets of Strings.
+ *
+ * @attributes
+ *   elements   Set<String>  Vector<String>
+ *
+ * @object A typical Set object is c={x1,...,xn}, where x1,...,xn are
+ *   elements.
+ *
+ * @abstract_properties
+ *  optional(elements) = false /\
+ *  for each element in elements. element is String
+ *
+ * @author huynq
  */
-public class Set<T> implements Iterable<T> {
+public class Set {
+    @DomainConstraint(type = "Vector", optional = false)
+    private Vector elements;
+
     /**
-     *  @effects
-     *      initialise values = T[]
+     * @effects initialise <tt>this</tt> to be empty
      */
-    T[] values;
+    public Set(){
+        elements = new Vector();
+    }
+
+    /**
+     * @modifies <tt>this</tt>
+     * @effects
+     *      if element is already in this
+     *          do nothing
+     *      else
+     *          add element to this
+     */
+    public void add(String element){
+        if (getIndex(element) < 0)
+            elements.add(element);
+    }
+
+    /**
+     * @modifies <tt>this</tt>
+     * @effects
+     *      if element is not in this
+     *          do nothing
+     *      else
+     *          remove element from this
+     */
+    public void remove(String element) {
+        int index = getIndex(element);
+        if (index < 0)
+            return;
+        elements.set(index, elements.lastElement());
+        elements.remove(elements.size() - 1);
+    }
+
+
+    /**
+     * @effects <pre>
+     *  if this contains element
+     *    return true
+     *  else
+     *    return false
+     */
+    public boolean contains(String element) {
+        return elements.contains(element);
+    }
+
+
+    /**
+     * @effects return the size of set.
+     */
+    public int size(){
+        return elements.size();
+    }
 
     /**
      * @effects
-     *      set values = elements
+     *  if this
+     *    return the trying where element appears
+     *  else
+     *    return -1
      */
-    public Set(T[] elements) {
-        this.values = elements;
-    }
-
-    /**
-     *
-     * @param element
-     */
-    public void add(T element) {
-
-    }
-
-    /**
-     *
-     */
-    public void remove() {
-
-    }
-
-    /**
-     *
-     * @param index
-     * @return
-     */
-    public T get(int index) {
-        return values[index];
-    }
-
-    /**
-     *
-     * @param index
-     * @param value
-     */
-    public void set(int index, T value) {
-        values[index] = value;
-    }
-
-    /**
-     *
-     * @return
-     */
-    public int length() {
-        return values.length;
-    }
-
-    /**
-     *
-     * @return
-     */
-    public Iterator<T> iterator() {
-        return new SetIterator();
-    }
-
-    /**
-     *
-     */
-    private class SetIterator implements Iterator<T> {
-        int current = 0;
-
-        /**
-         *
-         * @return
-         */
-        public boolean hasNext() {
-            return current < Set.this.values.length;
+    private int getIndex(String element) {
+        for (int i = 0; i < elements.size(); i++) {
+            if (element.equals(elements.get(i)))
+                return i;
         }
 
-        /**
-         *
-         * @return
-         * @throws NoSuchElementException
-         */
-        public T next() throws NoSuchElementException {
-            if (!hasNext()) {
-                throw new NoSuchElementException();
-            }
-            return values[current++];
-        }
+        return -1;
     }
 
     /**
-     *
-     * @return
+     * @effects
+     *      if element size is 0
+     *          return true
+     *      else
+     *          return false
+     */
+    public boolean isEmpty(){
+        if(elements.size() == 0)
+            return true;
+        else
+            return false;
+    }
+
+    /**
+     * @effects
+     *      if this is empty
+     *          return Set{ }
+     *      else
+     *          return Set{a, b, c, ...}
      */
     @Override
     public String toString() {
-        SetIterator a = new SetIterator();
-        String toStr = "Set:{";
-        while (a.hasNext()){
-            toStr = toStr + "\"" + a.next() + "\"";
-            if(a.hasNext()){
-                toStr = toStr + ",";
-            }
+        if (this.isEmpty())
+            return "Set:{ }";
+
+        String s = "Set:{\"" + elements.elementAt(0).toString();
+        for (int i = 1; i < size(); i++) {
+            s = s + "\" , \"" + elements.elementAt(i).toString();
         }
-        return toStr + "}";
+
+        return s + "\"}";
     }
 }
