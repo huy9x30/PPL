@@ -1,3 +1,5 @@
+package objects;
+
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -18,7 +20,7 @@ public class PCProg {
     }
 
     /**
-     * Create new object PC and add to Set<PC>
+     * Create new object objects.PC and add to objects.Set<objects.PC>
      * @throws InputMismatchException
      */
     public void createObject() throws InputMismatchException{
@@ -51,7 +53,7 @@ public class PCProg {
             manufacturer = scanner.nextLine();
         }
 
-        System.out.println("How many components in this PC?");
+        System.out.println("How many components in PC?");
         int numberOfComponent = scanner.nextInt();
         scanner.nextLine();
 
@@ -94,7 +96,8 @@ public class PCProg {
     }
 
     /**
-     *
+     * @effects
+     *  display PC-Program report
      */
     public void displayReport() {
         String reportHeader =
@@ -106,7 +109,7 @@ public class PCProg {
         if (pcList.isEmpty()){
             this.report =
                     reportHeader +
-                    String.format("%70s", "No PC data available. Please input new PC record!\n") +
+                    String.format("%70s", "No objects.PC data available. Please input new PC record!\n") +
                     reportFooter;
         } else {
             String content = "";

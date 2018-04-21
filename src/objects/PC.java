@@ -1,16 +1,20 @@
+package objects;
+
+import utils.DomainConstraint;
+
 /**
  * @overview
- *  Represent an PC object
+ *  Represent an objects.PC object
  *
  * @attributes
  *  int         id
  *  String      model
  *  int         year
  *  String      manufacturer
- *  Set<String> components
+ *  objects.Set<String> components
  *
  * @object
- *  A typical PC is <model, year, manufacturer, components>
+ *  A typical objects.PC is <model, year, manufacturer, components>
  *
  * @abstract_properties
  *  mutable(model) = true /\ optional(model) = false /\ length(model) = 25 /\
@@ -18,7 +22,7 @@
  *  mutable(manufacturer) = false /\ optional(manufacturer) = false /\ length(manufacturer) = 50 /\
  *  mutable(components) = true /\ optional(components) = false
  *
- * @author Huy
+ * @author huynq
  */
 public class PC {
     private static int autoId = 1;
@@ -30,12 +34,12 @@ public class PC {
     private int year;
     @DomainConstraint(type = "String", mutable = false, optional = false, length = 50)
     private String manufacturer;
-    @DomainConstraint(type = "Set", optional = false)
+    @DomainConstraint(type = "objects.Set", optional = false)
     private Set components;
 
     /**
      * @effects
-     *  initialise empty PC object
+     *  initialise empty objects.PC object
      */
     public PC(){
 
@@ -43,7 +47,7 @@ public class PC {
 
     /**
      *  @effects
-     *   initialise this as PC:<model,year,manufacturer,components>,
+     *   initialise this as objects.PC:<model,year,manufacturer,components>,
      *      where id = autoId
      */
     public PC(String model, int year, String manufacturer, Set components) {
@@ -162,10 +166,10 @@ public class PC {
 
     /**
      *  @effects
-     *      return PC:<model,year,manufacturer,components>
+     *      return objects.PC:<model,year,manufacturer,components>
      */
     @Override
     public String toString() {
-        return "PC:<\"" + model + "\",\"" + year + "\",\"" + manufacturer + "\",\"" + components.toString() + "\">";
+        return "objects.PC:<\"" + model + "\",\"" + year + "\",\"" + manufacturer + "\",\"" + components.toString() + "\">";
     }
 }

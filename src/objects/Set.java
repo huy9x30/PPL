@@ -1,12 +1,16 @@
+package objects;
+
+import utils.DomainConstraint;
+
 import java.util.Vector;
 
 /**
- * @overview Set are mutable, unbounded sets of Strings.
+ * @overview objects.Set are mutable, unbounded sets of Strings.
  *
  * @attributes
- *   elements   Set<String>  Vector<String>
+ *   elements   objects.Set<String>  Vector<String>
  *
- * @object A typical Set object is c={x1,...,xn}, where x1,...,xn are
+ * @object A typical objects.Set object is c={x1,...,xn}, where x1,...,xn are
  *   elements.
  *
  * @abstract_properties
@@ -108,9 +112,9 @@ public class Set {
     /**
      * @effects
      *      if this is empty
-     *          return Set{ }
+     *          return objects.Set{ }
      *      else
-     *          return Set{a, b, c, ...}
+     *          return objects.Set{a, b, c, ...}
      */
     @Override
     public String toString() {

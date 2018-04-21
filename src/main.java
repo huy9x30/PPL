@@ -1,6 +1,15 @@
+import objects.PCProg;
+import utils.TextIO;
+
 import java.io.IOException;
 import java.util.ArrayList;
 
+/**
+ * @effects
+ *  Create new PCProg object and run operations
+ *
+ * @author huynq
+ */
 public class main{
     public static void main(String[] args) throws IOException {
         PCProg pcProgram = new PCProg("", new ArrayList<>());

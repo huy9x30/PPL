@@ -1,3 +1,6 @@
+import objects.PC;
+import objects.Set;
+
 import java.util.Scanner;
 
 /**
@@ -18,7 +21,7 @@ public class trying {
         System.out.println("Input Manufacturer");
         String manufacturer = scanner.nextLine();
 
-        System.out.println("How many components in this PC?");
+        System.out.println("How many components in this objects.PC?");
         int numberOfComponent = scanner.nextInt();
         scanner.nextLine();
 
