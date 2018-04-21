@@ -115,13 +115,13 @@ public class Set {
     @Override
     public String toString() {
         if (this.isEmpty())
-            return "Set:{ }";
+            return "[No component is defined.]";
 
-        String s = "Set:{\"" + elements.elementAt(0).toString();
+        String s = "[\"" + elements.elementAt(0).toString();
         for (int i = 1; i < size(); i++) {
             s = s + "\" , \"" + elements.elementAt(i).toString();
         }
 
-        return s + "\"}";
+        return s + "\"]";
     }
 }

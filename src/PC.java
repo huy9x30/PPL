@@ -22,12 +22,24 @@
  */
 public class PC {
     private static int autoId = 1;
+    @DomainConstraint(type = "int", mutable = false, optional = false, min = 1)
     private int id;
     @DomainConstraint(type = "String", optional = false, length = 25)
     private String model;
+    @DomainConstraint(type = "int", mutable = false, optional = false, min = 1970)
     private int year;
+    @DomainConstraint(type = "String", mutable = false, optional = false, length = 50)
     private String manufacturer;
+    @DomainConstraint(type = "Set", optional = false)
     private Set components;
+
+    /**
+     * @effects
+     *  initialise empty PC object
+     */
+    public PC(){
+
+    }
 
     /**
      *  @effects
@@ -88,7 +100,7 @@ public class PC {
      *          return false
      */
     public boolean validateManufacturer(String manufacturer) {
-        return manufacturer != null && manufacturer.length() <= 50;
+        return (manufacturer != null && manufacturer.length() <= 50);
     }
 
     /**
